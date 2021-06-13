@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_today"
+        android:icon="@drawable/icon_today"
+        android:title="Today"/>
+    <item
+        android:id="@+id/nav_timetable"
+        android:icon="@drawable/icon_timetable"
+        android:title="Timetable"/>
+    <item
+        android:id="@+id/nav_todo"
+        android:icon="@drawable/icon_todo"
+        android:title="To-Do"/>
+    <item
+        android:id="@+id/nav_others"
+        android:icon="@drawable/icon_others"
+        android:title="Extras"/>
+</menu>
