@@ -23,17 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.addcourse);
-//       setUpBottomNavigation();
-//        addButton = findViewById(R.id.button);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, AddCourseActivity.class);
-//                //startActivityForResult(intent, REQUEST_CODE);
-//                startActivity(intent);
-//            }
-//       });
+        setContentView(R.layout.activity_main);
+        setUpBottomNavigation();
     }
 
     private void setUpBottomNavigation(){
