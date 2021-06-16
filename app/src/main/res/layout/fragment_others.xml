@@ -15,5 +15,13 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:text="Course +" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/button"
+        android:text="Send Notification"
+        android:layout_marginTop="50dp"
+        android:id="@+id/notifier"/>
+
 
 </RelativeLayout>

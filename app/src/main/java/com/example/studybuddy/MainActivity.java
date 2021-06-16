@@ -17,18 +17,37 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button addButton;
+    private BottomNavigationView bottomNav;
     final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         setUpBottomNavigation();
+        handleIntent(getIntent());
+    }
+
+    public void handleIntent(Intent intent){
+        String frag = intent.getStringExtra("fragmentToOpen");
+        if (frag != null){
+            Log.d("wow", frag);
+            if (frag.equals("OpenToDo")){
+                Log.d("wow", "we got here");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodoFragment()).commit();
+                bottomNav.setSelectedItemId(R.id.nav_todo);
+            }
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
     }
 
     private void setUpBottomNavigation(){
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation);
 
         //Setting default fragment.
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodayFragment()).commit();
