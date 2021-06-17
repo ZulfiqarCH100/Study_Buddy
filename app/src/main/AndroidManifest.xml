@@ -3,6 +3,8 @@
     package="com.example.studybuddy">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".Base"
@@ -12,6 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyBuddy">
+
+        <receiver
+            android:name="com.example.studybuddy.BootBroadcastReceiver"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <receiver android:name=".TodayWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -21,6 +33,16 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/today_widget_info" />
         </receiver>
+
+        <receiver
+            android:name=".MyAlarmReceiver"
+            android:process=":remote"
+            android:exported="true">
+        </receiver>
+
+        <service
+            android:name=".MyNotificationService"
+            android:exported="true" />
 
         <activity android:name=".MainActivity"
             android:launchMode="singleTop">

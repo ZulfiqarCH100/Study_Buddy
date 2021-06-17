@@ -10,6 +10,7 @@ import android.os.Build;
 
 public class Base extends Application {
     public static final String CHANNEL_1_ID = "notificationChannel";
+    public static final String CHANNEL_2_ID = "notificationChannel2";
 
     @Override
     public void onCreate() {
@@ -21,6 +22,8 @@ public class Base extends Application {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             //making the notification channel.
             NotificationChannel channel = new NotificationChannel(CHANNEL_1_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel2 = new NotificationChannel(CHANNEL_2_ID, "Test Notification2", NotificationManager.IMPORTANCE_HIGH);
+
             //Properties of the notification.
             channel.enableVibration(true);
             channel.enableLights(true);
@@ -29,6 +32,7 @@ public class Base extends Application {
             //Giving the channel to the notification manager so it can activate it.
             NotificationManager manager = getSystemService((NotificationManager.class));
             manager.createNotificationChannel(channel);
+            manager.createNotificationChannel(channel2);
             //Now we register this class in the manifest so this runs at the start of the app. DONE.
         }
     }
