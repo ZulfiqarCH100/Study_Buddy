@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/addCourse"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|left"
-        android:layout_marginLeft="4dp"
         android:layout_marginTop="10dp"
-        android:text="Add a Course"
-        android:textSize="20sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/addCourse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Add a Course"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="4.4"
+            android:foregroundTint="#F7FFFFFF"
+            android:text="SAVE"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:iconPadding="0sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/className"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Course Name:" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Course Name:"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/courseName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ems="13"
             android:hint="Programming Fundamentals etc"
             android:inputType="text"
+            android:selectAllOnFocus="true"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -51,18 +77,22 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Teacher Name: " />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Teacher Name: "
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/teacherName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ems="13"
             android:hint="Mr/Ms."
             android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -77,19 +107,23 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="Section:" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Section:"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/section"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ems="13"
             android:hint="A1 etc."
             android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -104,18 +138,19 @@
 
         <TextView
             android:id="@+id/day"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="left|center_vertical"
-            android:text="Day:" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Day:"
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="false"
-            android:layout_marginTop="4dp" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -130,19 +165,27 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="100dp"
-            android:layout_height="47dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="Class Time:" />
+            android:text="Class Time:"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/startTime"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:text="SET" />
+            android:layout_weight="2"
+            android:text="Set Time"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
 
 
     </LinearLayout>
@@ -152,22 +195,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="-7dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Class Venue:" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Class Venue:"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/venueInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ems="13"
             android:hint="CS01 etc."
             android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -181,13 +230,18 @@
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Class Duration:" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3
+"
+            android:gravity="center_vertical"
+            android:text="Duration:"
+            android:textSize="16sp" />
 
         <RadioGroup
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -196,28 +250,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 hour"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1.5 hours"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 hours"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 hours"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </RadioGroup>
     </LinearLayout>
 
