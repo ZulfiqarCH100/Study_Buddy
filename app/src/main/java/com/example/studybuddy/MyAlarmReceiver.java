@@ -13,11 +13,7 @@ public class MyAlarmReceiver extends BroadcastReceiver {
     // Triggered by the Alarm periodically (starts the service to run task)
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("wow", "Step 2");
         Intent i = new Intent(context, MyNotificationService.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-            context.startForegroundService(i);
-        }
+        MyNotificationService.enqueueWork(context, i);
     }
 }

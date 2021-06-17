@@ -4,31 +4,34 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-public class MyNotificationService extends IntentService {
+import java.util.concurrent.ThreadPoolExecutor;
 
-    public MyNotificationService() {
-        super("Due ToDos");
+//   JobIntentService
+//Works on a seperate thread.
+//No need to make the activity foreground with this.
+//Kills itself after done.
+// It is better ot use JobSceduler with this which is just a better Alarm Manager.
+
+public class MyNotificationService extends JobIntentService {
+    public static final int JOB_ID = 1;
+
+    public static void enqueueWork(Context context, Intent work) {
+        enqueueWork(context, MyNotificationService.class, JOB_ID, work);
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        Notification notification = new NotificationCompat.Builder(this, Base.CHANNEL_2_ID)
-                .setContentTitle("")
-                .setContentText("").build();
-        startForeground(2, notification);
-    }
-
-    @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         Log.d("wow", "Step 3");
         NotificationManagerCompat notifManager = NotificationManagerCompat.from(this);
         Intent i = new Intent(this, MainActivity.class);
