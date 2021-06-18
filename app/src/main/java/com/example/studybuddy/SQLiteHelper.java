@@ -15,7 +15,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         String sql = "CREATE TABLE Courses (Name TEXT PRIMARY KEY, " +
                 "Teacher TEXT," +
-                "Section TEXT)";
+                "Section TEXT," +
+                "Venue TEXT," +
+                "Hour INT," +
+                "Minute INT,"+
+                "Duration TEXT)";
         db.execSQL(sql);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

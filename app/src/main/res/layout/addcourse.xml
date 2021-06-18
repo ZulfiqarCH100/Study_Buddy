@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout
@@ -34,7 +35,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
@@ -151,7 +152,7 @@
             android:id="@+id/day"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:text="Day:"
             android:textSize="16sp" />
@@ -161,7 +162,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="false"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/dayError"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4" />
 
     </LinearLayout>
 
@@ -189,7 +196,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_weight="2"
-            android:backgroundTint="#D10101"
+            android:backgroundTint="#05BD0D"
             android:text="Set Time"
             android:textColor="#FFFFFF" />
 
@@ -251,6 +258,7 @@
             android:textSize="16sp" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -262,28 +270,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 hour"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="1 hour" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1.5 hours"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="1.5 hours" />
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 hours"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="2 hours" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 hours"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="3 hours" />
         </RadioGroup>
     </LinearLayout>
 

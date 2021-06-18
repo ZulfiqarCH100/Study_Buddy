@@ -12,13 +12,17 @@ public class SQLite implements  Database{
     }
 
     @Override
-    public void SaveCourse(String name, String teacher, String section) {
+    public void SaveCourse(String name, String teacher, String section, String venue, int hour, int min, String duration) {
         SQLiteHelper dbHelper = new SQLiteHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put("Name", name);
         content.put("Teacher", teacher);
         content.put("Section", section);
+        content.put("Venue", venue);
+        content.put("Hour", hour);
+        content.put("Minute",min);
+        content.put("Duration", duration);
         db.insertWithOnConflict("Courses",null,content,SQLiteDatabase.CONFLICT_REPLACE);
     }
 }
