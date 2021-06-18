@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodoFragment()).commit();
                 bottomNav.setSelectedItemId(R.id.nav_todo);
             }
+        }
+
+        //Clicked position on the widget. Not needed but can be used in the future.
+        int pos = intent.getIntExtra(TodayWidgetProvider.EXTRA_ITEM_POSITION, -1);
+        if (pos != -1){
+            Toast.makeText(this, "Position clicked " + pos, Toast.LENGTH_LONG).show();
         }
     }
 
