@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E0E13"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/bgcircle"
+        android:layout_width="276dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/bgcircle"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageView
+        android:id="@+id/icanchor"
+        android:layout_width="286dp"
+        android:layout_height="259dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/icanchor"
+        android:layout_centerHorizontal="true" />
+
+
+    <Chronometer
+        android:id="@+id/timerHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="#FFF"
+        android:textSize="62sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/bgcircle"/>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70dp"
+        android:layout_height="75dp"
+        android:drawableBottom="@drawable/play"
+        android:layout_marginTop="50dp"
+        app:backgroundTint="#1E0E13"
+        android:background="#1E0E13"
+        android:layout_below="@+id/timerHere"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

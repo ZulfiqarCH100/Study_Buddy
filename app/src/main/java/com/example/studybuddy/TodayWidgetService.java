@@ -4,6 +4,8 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.provider.ContactsContract;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ public class TodayWidgetService extends RemoteViewsService {
     class TodayWidgetItemFactory implements RemoteViewsFactory{
         private Context context;
         private int appWidgetId;
+        private Database db;
         private String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
         TodayWidgetItemFactory(Context context, Intent intent){
@@ -37,7 +40,7 @@ public class TodayWidgetService extends RemoteViewsService {
         public void onCreate() {
             //Make the db connection here, launched when the widget is created.
             //Dont do heavy operations here.
-
+            db = new SQLite(context);
         }
 
         @Override
@@ -54,7 +57,7 @@ public class TodayWidgetService extends RemoteViewsService {
         @Override
         public void onDestroy() {
             //Close DB connection here.
-
+            db = null;
         }
 
         @Override
@@ -70,12 +73,12 @@ public class TodayWidgetService extends RemoteViewsService {
             //Each entry in a listView is a RemoteView here.
             //We can do heavy operations here.
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.today_widget_item);
-            views.setTextViewText(R.id.temp, data[position]); //Setting text of my listView item at the position.
+            views.setTextViewText(R.id.todayWidgetCourse, data[position]); //Setting text of my listView item at the position.
 
             //Setting on click for each list item to open App. This is basically a continuation of what we did in the Provider.
             Intent fillIntent = new Intent();
             fillIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId); //Refresh the widget with this id.
-            views.setOnClickFillInIntent(R.id.todayItem, fillIntent);
+            views.setOnClickFillInIntent(R.id.todayWidgetItem, fillIntent);
 
             return views;
         }
