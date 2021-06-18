@@ -32,6 +32,15 @@ public class OthersFragment extends Fragment {
             }
         });
 
+        Button pomodoro = view.findViewById(R.id.startPomodoro);
+        pomodoro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(view.getContext(), PomodoroActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         notifManager = NotificationManagerCompat.from(view.getContext());
         Button notifier = view.findViewById(R.id.notifier);

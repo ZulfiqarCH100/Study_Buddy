@@ -38,7 +38,7 @@ public class TodayWidgetProvider extends AppWidgetProvider {
                 0, clickIntent, 0);
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.today_widget); //Displays our layout in another process.
-        views.setOnClickPendingIntent(R.id.todayWidget, pIntent); //Onclick listener to open app when empty space is clicked on the widget.
+        views.setOnClickPendingIntent(R.id.todayWidgetTitle, pIntent); //Onclick listener to open app when empty space is clicked on the widget.
         views.setRemoteAdapter(R.id.widgetTodayList, serviceIntent); //connecting the adapter to the listView.
         //Setting intent to open app for listview items.
         views.setPendingIntentTemplate(R.id.widgetTodayList, clickPendingIntent);

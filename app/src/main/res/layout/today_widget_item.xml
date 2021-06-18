@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:id="@+id/todayItem">
+    android:id="@+id/todayWidgetItem"
+    android:background="@color/white"
+    android:layout_marginBottom="1dp"
+    android:layout_marginTop="1dp">
 
-    <TextView
-        android:id="@+id/temp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_200"
-        android:text="item"/>
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/todayWidgetCourse"
+            android:text="Database management"
+            android:layout_toEndOf="@id/todayWidgetIcon"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/todayWidgetTime"
+            android:layout_alignParentEnd="true"
+            android:text="12:00 PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/design_default_color_primary"/>
+        <TextView
+            android:id="@+id/todayWidgetRoom"
+            android:text="CS-12"
+            android:textColor="@color/design_default_color_primary"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/todayWidgetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginRight="5dp"/>
+
+        <ImageView
+            android:id="@+id/todayWidgetIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/today_widget_icon"/>
+    </RelativeLayout>
 
 </RelativeLayout>

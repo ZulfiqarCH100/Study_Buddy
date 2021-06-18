@@ -57,6 +57,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCourseActivity" />
+        <activity android:name=".PomodoroActivity" />
+
     </application>
 
 </manifest>

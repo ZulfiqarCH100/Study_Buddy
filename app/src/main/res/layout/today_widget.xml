@@ -1,14 +1,47 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/appWidgetBackgroundColor"
+    android:orientation="vertical"
     android:padding="@dimen/widget_margin"
     android:theme="@style/ThemeOverlay.StudyBuddy.AppWidgetContainer"
     android:id="@+id/todayWidget">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary">
+
+        <ImageView
+            android:id="@+id/todayWidgetPhoto"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_today_widget"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/todayWidgetTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle=""
+            android:text="Today"
+            android:layout_toEndOf="@+id/todayWidgetPhoto"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
     <ListView
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:id="@+id/widgetTodayList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
         />
-</RelativeLayout>
+</LinearLayout>
