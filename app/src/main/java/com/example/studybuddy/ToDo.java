@@ -4,18 +4,27 @@ public class ToDo {
     private boolean done = false;
     private String text;
     private String color; //Color of the note.
-    private String dueDate;
+    private String dueMonth;
+    private String dueDay;
+    private int dueHour, dueMin;
 
-    public ToDo(String t, String d, String c){text = t; dueDate = d; color = c;}
+    public ToDo(String t, String dm, String dd, int dh, int dmin, String c){
+        text = t;
+        dueMonth = dm;
+        dueDay = dd;
+        dueHour = dh;
+        dueMin = dmin;
+        color = c;
+    }
 
     public boolean getDone(){return done;}
 
-    public String getDueDate() {
-        return dueDate;
+    public String getDueDay() {
+        return dueDay;
     }
 
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+    public void setDueDate(String dueDay) {
+        this.dueDay = dueDay;
     }
 
     public void setDone(boolean done) {
