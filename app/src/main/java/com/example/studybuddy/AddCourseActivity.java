@@ -57,10 +57,16 @@ public class AddCourseActivity extends AppCompatActivity {
 
                     Database db = new SQLite(getApplicationContext());
                     db.SaveCourse(courseName, teacherName, section, venue, s_hour, s_minute, classDuration);
+                    for (int i = 0; i < classDays.size(); i++){
+                        db.SaveDays(classDays.get(i), courseName);
+                    }
+                    AddCourseActivity.super.onBackPressed();
                 }
                 else{
                     Toast t = Toast.makeText(getApplicationContext(), "Incomplete Data!", Toast.LENGTH_SHORT);
                     t.show();
+                    Database db = new SQLite(getApplicationContext());
+                    db.GetTodaysClasses("Saturday");
                 }
             }
         });
@@ -93,7 +99,6 @@ public class AddCourseActivity extends AppCompatActivity {
         }
 
         if(timeButton.getText().toString().toUpperCase().equals("SET TIME")){
-            Log.d("Test", timeButton.getText().toString().toUpperCase());
             flag = false;
             timeButton.setError("Required");
         }
