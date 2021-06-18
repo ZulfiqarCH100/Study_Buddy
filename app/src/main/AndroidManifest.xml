@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".Base"
@@ -14,16 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyBuddy">
+        <activity android:name=".AddToDoActivity"></activity>
 
         <receiver
-            android:name="com.example.studybuddy.BootBroadcastReceiver"
+            android:name=".BootBroadcastReceiver"
             android:enabled="true"
-            android:process=":remote" >
+            android:process=":remote">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".TodayWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -33,22 +33,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/today_widget_info" />
         </receiver>
-
         <receiver
             android:name=".MyAlarmReceiver"
-            android:process=":remote"
-            android:exported="true">
-        </receiver>
+            android:exported="true"
+            android:process=":remote" />
 
         <service
             android:name=".MyNotificationService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".TodayWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <service android:name=".TodayWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,7 +57,6 @@
         </activity>
         <activity android:name=".AddCourseActivity" />
         <activity android:name=".PomodoroActivity" />
-
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.studybuddy;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,14 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.PrimitiveIterator;
-
 public class TodoFragment extends Fragment {
     private View view; //To use FindViewById we need to inflate this view, done in onCreateView.
     private ArrayList<ToDo> todos;
     private RecyclerView mRecyclerview;
     private ToDoAdapter mAdapter; //Only sends as many objects to the RecyclerView as it can view in one screen.
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private Button toDoButton;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,14 +33,22 @@ public class TodoFragment extends Fragment {
         todos = new ArrayList<>();
         makeTodo();
         buildRecyclerView();
+        toDoButton = view.findViewById(R.id.todoAddMore);
+        toDoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), AddToDoActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     
     public void makeTodo(){
-        todos.add(new ToDo("Hello", "Kal", "#E57373"));
-        todos.add(new ToDo("Hello2", "Kal2", "#EA80FC"));
-        todos.add(new ToDo("Hello3", "Kal3", "#43A047"));
-        todos.add(new ToDo("Hello4", "Kal4", "#FFFF00"));
+//        todos.add(new ToDo("Hello", "Kal", "#E57373"));
+//        todos.add(new ToDo("Hello2", "Kal2", "#EA80FC"));
+//        todos.add(new ToDo("Hello3", "Kal3", "#43A047"));
+//        todos.add(new ToDo("Hello4", "Kal4", "#FFFF00"));
 
     }
 

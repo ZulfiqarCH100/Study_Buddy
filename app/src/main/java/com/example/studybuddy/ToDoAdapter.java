@@ -78,7 +78,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ExampleViewHol
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         ToDo current = list.get(position);
         holder.text.setText(current.getText());
-        holder.dueDate.setText(current.getDueDate());
+        holder.dueDate.setText(current.getDueDay());
         holder.mCheckBox.setChecked(current.getDone());
         RelativeLayout c = (RelativeLayout) holder.itemView.findViewById(R.id.todoCard);
         c.setBackgroundColor(Color.parseColor(current.getColor())); //We can set any background color for the card.
