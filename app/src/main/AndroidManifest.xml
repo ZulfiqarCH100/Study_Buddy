@@ -24,7 +24,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".TodayWidget">
+        <receiver android:name=".TodayWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -44,6 +44,9 @@
             android:name=".MyNotificationService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <service android:name=".TodayWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
         <activity android:name=".MainActivity"
             android:launchMode="singleTop">

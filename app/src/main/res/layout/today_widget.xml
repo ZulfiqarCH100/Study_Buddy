@@ -3,12 +3,12 @@
     android:layout_height="match_parent"
     android:background="?attr/appWidgetBackgroundColor"
     android:padding="@dimen/widget_margin"
-    android:theme="@style/ThemeOverlay.StudyBuddy.AppWidgetContainer">
+    android:theme="@style/ThemeOverlay.StudyBuddy.AppWidgetContainer"
+    android:id="@+id/todayWidget">
 
     <ListView
         android:id="@+id/widgetTodayList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
         />
 </RelativeLayout>
