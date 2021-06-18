@@ -43,6 +43,13 @@ public class TodayWidgetProvider extends AppWidgetProvider {
         //Setting intent to open app for listview items.
         views.setPendingIntentTemplate(R.id.widgetTodayList, clickPendingIntent);
 
+        Intent i = new Intent(context, TodayWidgetProvider.class);
+        i.setAction(ACTION_REFRESH);
+        i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        PendingIntent pi = PendingIntent.getBroadcast(context,0,i,0);
+        views.setOnClickPendingIntent(R.id.todayWidget, pi);
+
+
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }

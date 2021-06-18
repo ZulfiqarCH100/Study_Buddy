@@ -6,12 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.zip.Inflater;
 
 import static com.example.studybuddy.TodayWidgetProvider.EXTRA_ITEM_POSITION;
@@ -29,7 +36,7 @@ public class TodayWidgetService extends RemoteViewsService {
         private Context context;
         private int appWidgetId;
         private Database db;
-        private String[] data = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        private ArrayList<Course> data;
 
         TodayWidgetItemFactory(Context context, Intent intent){
             this.context = context;
@@ -41,6 +48,7 @@ public class TodayWidgetService extends RemoteViewsService {
             //Make the db connection here, launched when the widget is created.
             //Dont do heavy operations here.
             db = new SQLite(context);
+            data = new ArrayList<>();
         }
 
         @Override
@@ -49,9 +57,11 @@ public class TodayWidgetService extends RemoteViewsService {
 
             //Fetch data here from db.
             //We can run long running tasks here. Runs in seperate thread.
-            Date date = new Date();
-            String time = DateFormat.getTimeInstance(DateFormat.SHORT).format(date);
-            data[1] = time;
+            Log.d("wow", "ayyyyyyyyy");
+
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            data = db.GetTodaysClasses(new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.getTime()));
         }
 
         @Override
@@ -63,7 +73,7 @@ public class TodayWidgetService extends RemoteViewsService {
         @Override
         public int getCount() {
             //total number of items we want to display.
-            return data.length; //.size() for ArrayList
+            return data.size(); //.size() for ArrayList
         }
 
         @Override
@@ -73,7 +83,9 @@ public class TodayWidgetService extends RemoteViewsService {
             //Each entry in a listView is a RemoteView here.
             //We can do heavy operations here.
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.today_widget_item);
-            views.setTextViewText(R.id.todayWidgetCourse, data[position]); //Setting text of my listView item at the position.
+            views.setTextViewText(R.id.todayWidgetCourse, data.get(position).courseName); //Setting text of my listView item at the position.
+            views.setTextViewText(R.id.todayWidgetTime, data.get(position).getTime()); //Setting text of my listView item at the position.
+            views.setTextViewText(R.id.todayWidgetRoom, data.get(position).venue); //Setting text of my listView item at the position.
 
             //Setting on click for each list item to open App. This is basically a continuation of what we did in the Provider.
             Intent fillIntent = new Intent();

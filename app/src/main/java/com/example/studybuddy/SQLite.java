@@ -1,10 +1,13 @@
 package com.example.studybuddy;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,12 @@ public class SQLite implements  Database{
         content.put("Minute",min);
         content.put("Duration", duration);
         db.insertWithOnConflict("Courses",null,content,SQLiteDatabase.CONFLICT_REPLACE);
+
+        //Notify all widgets.
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        int appWidgetIds[] = appWidgetManager.getAppWidgetIds(
+                new ComponentName(context, TodayWidgetProvider.class));
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widgetTodayList);
     }
 
     @Override
