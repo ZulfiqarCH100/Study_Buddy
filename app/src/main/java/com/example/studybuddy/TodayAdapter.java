@@ -1,6 +1,7 @@
 package com.example.studybuddy;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ExampleViewH
     private ArrayList<Course> list;
     private TodayAdapter.onItemClickListener mListener;
     private DateFormat dateFormat;
+    int cardColor = 0;
 
     //This interface would be implemented in main activity to get position of the item clicked.
     //The main activity is subscribed to the listeners via this interface.
@@ -38,34 +40,28 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ExampleViewH
 
     //We cant use a non static class inside a static class so we pass the ExampleViewHolder a onclick listener object.
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
-        public TextView text;
-        public TextView dueDate;
-        public CheckBox mCheckBox;
+        public TextView courseName;
+        public TextView teacher;
+        public TextView section;
+        public TextView venue;
+        public TextView time;
+        public TextView duration;
+
         public ExampleViewHolder(View itemView, TodayAdapter.onItemClickListener listener) {
             super(itemView);
-            text = itemView.findViewById(R.id.todoTask);
-            dueDate = itemView.findViewById(R.id.todoTaskTime);
-            mCheckBox = itemView.findViewById(R.id.todoCheckDone);
-
-            //OnClick Listener for the checkBox.
-            mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (listener != null){
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
-                            listener.subscribeChange(position, isChecked); //Notify the program checkbox has changed.
-                        }
-                    }
-                }
-            });
+            courseName = itemView.findViewById(R.id.todayCourse);
+            teacher = itemView.findViewById(R.id.todayTeacher);
+            section = itemView.findViewById(R.id.todaySection);
+            venue = itemView.findViewById(R.id.todayRoom);
+            time = itemView.findViewById(R.id.todayTime);
+            duration = itemView.findViewById(R.id.todayDuration);
         }
     }
 
     @NonNull
     @Override
     public TodayAdapter.ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.today,parent,false);
         TodayAdapter.ExampleViewHolder evh = new TodayAdapter.ExampleViewHolder(v, mListener);
         return evh;
     }
@@ -74,14 +70,34 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ExampleViewH
     @Override
     public void onBindViewHolder(@NonNull TodayAdapter.ExampleViewHolder holder, int position) {
         Course current = list.get(position);
-        /*(
-        holder.text.setText(current.getText());
-        holder.dueDate.setText(current.getDueDate());
-        holder.mCheckBox.setChecked(current.getDone());
-        RelativeLayout c = (RelativeLayout) holder.itemView.findViewById(R.id.todoCard);
-        c.setBackgroundColor(Color.parseColor(current.getColor())); //We can set any background color for the card.
+        holder.courseName.setText(current.courseName);
+        holder.teacher.setText(current.teacherName);
+        holder.section.setText(current.section);
+        holder.venue.setText(current.venue);
+        holder.time.setText(current.getTime());
+        holder.duration.setText(current.duration);
 
-         */
+        RelativeLayout c = (RelativeLayout) holder.itemView.findViewById(R.id.todayCard);
+        if (cardColor == 0) {
+            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg4);
+            c.setBackground(myDrawable);
+            cardColor++;
+        }
+        else if (cardColor == 1) {
+            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg1);
+            c.setBackground(myDrawable);
+            cardColor++;
+        }
+        else if (cardColor == 2) {
+            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg2);
+            c.setBackground(myDrawable);
+            cardColor ++;
+        }
+        else if (cardColor == 3) {
+            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg3);
+            c.setBackground(myDrawable);
+            cardColor = 0;
+        }
     }
 
     @Override

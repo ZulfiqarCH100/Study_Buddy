@@ -2,35 +2,82 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="8dp">
 
     <RelativeLayout
-        android:id="@+id/todoCard"
+        android:id="@+id/todayCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background = "@color/cardview_light_background">
+        android:background="@drawable/bg1">
 
         <TextView
-            android:id="@+id/todoTask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/todoCheckDone"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:layout_toStartOf="@+id/todoTaskTime"
+            android:id="@+id/todayCourse"
+            android:textColor="#FFFFFF"
+            android:text="Database management"
+            android:layout_alignParentTop="true"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
-
-            />
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/todayTeacher"
+            android:layout_width="wrap_content"
+            android:textColor="#C5C3BF"
+            android:text="Zulfiqar Chaudhry"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/todayCourse"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/todoTaskTime"
+            android:id="@+id/todaySection"
             android:layout_width="wrap_content"
+            android:textColor="#C5C3BF"
+            android:text="C1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/todayTeacher"/>
+
+
+        <TextView
+            android:id="@+id/todayTime"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="40dp"
-            android:textSize="15sp"
-            android:layout_centerVertical="true"
-            android:textColor="#1a237e"/>
+            android:text="12:00"
+            android:layout_alignTop="@+id/todayCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/todayDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/todayTime"
+            android:layout_alignParentEnd="true"
+            android:text="Duration: 1.5"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#CFC6C6"/>
+
+        <TextView
+            android:id="@+id/todayRoom"
+            android:text="CS-12"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:layout_below="@+id/todayTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginRight="5dp"/>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

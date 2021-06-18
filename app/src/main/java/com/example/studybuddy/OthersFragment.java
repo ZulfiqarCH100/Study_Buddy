@@ -41,6 +41,15 @@ public class OthersFragment extends Fragment {
             }
         });
 
+        Button gpa = view.findViewById(R.id.gpacalc);
+        gpa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(view.getContext(), GpaActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         notifManager = NotificationManagerCompat.from(view.getContext());
         Button notifier = view.findViewById(R.id.notifier);
