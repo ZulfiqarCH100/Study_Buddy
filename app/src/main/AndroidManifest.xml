@@ -59,6 +59,7 @@
         <activity android:name=".AddCourseActivity" />
         <activity android:name=".PomodoroActivity" />
         <activity android:name=".GpaActivity"/>
+        <activity android:name=".AddToDoActivity"/>
     </application>
 
 </manifest>

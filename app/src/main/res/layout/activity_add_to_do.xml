@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/AddToDoHeading"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
@@ -25,12 +25,13 @@
 
         <Button
             android:id="@+id/saveButton2"
-            android:layout_width="match_parent"
+            android:layout_alignTop="@+id/AddToDoHeading"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_weight="4"
             android:text="Save" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

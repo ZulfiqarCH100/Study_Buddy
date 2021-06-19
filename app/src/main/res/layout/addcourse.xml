@@ -11,14 +11,7 @@
     android:layout_marginEnd="10dp"
     android:orientation="vertical">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -36,18 +29,20 @@
 
         <Button
             android:id="@+id/saveButton"
-            android:layout_width="match_parent"
+            android:layout_alignTop="@+id/addCourse"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
             android:layout_weight="4.4"
             android:backgroundTint="#05BD0D"
+            android:layout_alignParentRight="true"
             android:text="SAVE"
             android:textAlignment="center"
             android:textColor="#F0F1F4"
             android:textSize="12sp"
             android:textStyle="bold"
             app:iconPadding="0sp" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/className"
@@ -239,7 +234,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/classDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -248,21 +243,23 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="3
-"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:text="Duration:"
             android:textSize="16sp" />
 
         <RadioGroup
+            android:layout_below="@+id/textView8"
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+
             android:orientation="horizontal">
 
             <RadioButton
@@ -297,7 +294,7 @@
                 android:textSize="12sp"
                 tools:text="3 hours" />
         </RadioGroup>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
     </ScrollView>

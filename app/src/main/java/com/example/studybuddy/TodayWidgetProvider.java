@@ -24,6 +24,7 @@ public class TodayWidgetProvider extends AppWidgetProvider {
                                 int appWidgetId) {
         //Clicking the widget opens the application.
         Intent openApp = new Intent(context, MainActivity.class);
+        openApp.setAction("OpenToday");
         PendingIntent pIntent = PendingIntent.getActivity(context, 0, openApp, 0);
 
         // Construct the RemoteViews object

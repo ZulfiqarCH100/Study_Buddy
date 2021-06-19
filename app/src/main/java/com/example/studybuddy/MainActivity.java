@@ -40,13 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleIntent(Intent intent){
         String frag = intent.getStringExtra("fragmentToOpen");
+        Log.d("wow", intent.getAction());
         if (frag != null){
+            Log.d("wow", "intent ai yahan");
             Log.d("wow", frag);
-            if (frag.equals("OpenToDo")){
+            if (frag.equals("OpenToDo")) {
                 Log.d("wow", "we got here");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodoFragment()).commit();
                 bottomNav.setSelectedItemId(R.id.nav_todo);
             }
+        }
+
+        else if (intent.getAction().equals("OpenToday")){
+            Log.d("wow", "intent ai");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodayFragment()).commit();
+            bottomNav.setSelectedItemId(R.id.nav_today);
         }
 
         //Clicked position on the widget. Not needed but can be used in the future.
