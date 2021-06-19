@@ -1,6 +1,7 @@
 package com.example.studybuddy;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Calendar;import java.time.DayOfWeek;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ExampleViewHolder> {
     private ArrayList<ToDo> list;
@@ -74,6 +76,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ExampleViewHol
     }
 
     //Sets the values of one Example_object held by holder.
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         ToDo current = list.get(position);

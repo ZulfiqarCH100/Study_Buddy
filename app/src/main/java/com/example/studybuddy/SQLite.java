@@ -6,10 +6,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import androidx.annotation.RequiresApi;
+
+import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SQLite implements  Database{
 
@@ -79,5 +87,64 @@ public class SQLite implements  Database{
             }
         }
         return courses;
+    }
+
+    @Override
+    public void SaveToDo(String task, int startHour, int startMinute, int startDay, int startMonth, int startYear) {
+        SQLiteHelper dbHelper = new SQLiteHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put("Task", task);
+        content.put("Hour", startHour);
+        content.put("Minute", startMinute);
+        content.put("Day", startDay);
+        content.put("Month", startMonth);
+        content.put("Year", startYear);
+        db.insertWithOnConflict("ToDo", null, content, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    @Override
+    public ArrayList<ToDo> getAllToDo() {
+        ArrayList<ToDo> list = new ArrayList<>();
+        SQLiteHelper helper = new SQLiteHelper(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        String query = "SELECT * from ToDo";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()){
+            int ID = cursor.getInt(0);
+            String task = cursor.getString(1);
+            int dueHour = cursor.getInt(2);
+            int dueMin = cursor.getInt(3);
+            int dueDay = cursor.getInt(4);
+            int dueMonth = cursor.getInt(5);
+            int dueYear = cursor.getInt(6);
+            list.add(new ToDo(ID, task, dueDay, dueMonth, dueYear, dueHour, dueMin));
+        }
+        Collections.sort(list);
+        return list;
+    }
+
+    @Override
+    public void removeToDo(int id) {
+        SQLiteHelper helper = new SQLiteHelper(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String query = "DELETE FROM ToDo WHERE ID = " + id;
+        db.execSQL(query);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public int getTodaysToDoCount() {
+        SQLiteHelper helper = new SQLiteHelper(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        LocalDate current = LocalDate.now();
+        Month Month = current.getMonth();
+        int month = Month.getValue();
+        int year = current.getYear();
+        int day = current.getDayOfMonth();
+        String query = "Select * from ToDo where Day = "+day+ " and Month = "+month+" and Year = "+year;
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor.getCount();
     }
 }

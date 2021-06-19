@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 11;
     public static final String DATABASE_NAME = "Courses";
 
     public SQLiteHelper(Context context){
@@ -26,10 +26,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "CourseName TEXT," +
                 "primary key (Day, CourseName))";
         db.execSQL(sql2);
+
+        String sql3 = "CREATE TABLE ToDo (ID INTEGER PRIMARY KEY autoincrement,"+
+                "Task TEXT," +
+                "Hour INT," + "Minute INT," + "Day INT,"
+                + "Month INT," + "Year INT" +
+                ")";
+        db.execSQL(sql3);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Courses");
         db.execSQL("DROP TABLE IF EXISTS TimeTable");
+        db.execSQL("DROP TABLE IF EXISTS ToDo");
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {

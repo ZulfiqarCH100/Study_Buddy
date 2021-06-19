@@ -54,9 +54,9 @@ public class AddCourseActivity extends AppCompatActivity {
                 if(validateData() == true) {
                     Toast t = Toast.makeText(getApplicationContext(), "Saving Course...", Toast.LENGTH_SHORT);
                     t.show();
-
                     Database db = new SQLite(getApplicationContext());
                     db.SaveCourse(courseName, teacherName, section, venue, s_hour, s_minute, classDuration);
+
                     for (int i = 0; i < classDays.size(); i++){
                         db.SaveDays(classDays.get(i), courseName);
                     }
@@ -65,8 +65,6 @@ public class AddCourseActivity extends AppCompatActivity {
                 else{
                     Toast t = Toast.makeText(getApplicationContext(), "Incomplete Data!", Toast.LENGTH_SHORT);
                     t.show();
-                    Database db = new SQLite(getApplicationContext());
-                    db.GetTodaysClasses("Saturday");
                 }
             }
         });
@@ -169,22 +167,11 @@ public class AddCourseActivity extends AppCompatActivity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                if (hourOfDay == 0) {
-                                    hourOfDay += 12;
-                                    format = "AM";
-                                } else if (hourOfDay == 12) {
-                                    format = "PM";
-                                } else if (hourOfDay > 12) {
-                                    hourOfDay -= 12;
-                                    format = "PM";
-                                } else {
-                                    format = "AM";
-                                }
                                 s_hour = hourOfDay;
                                 s_minute = minute;
                                 timeButton.setText(s_hour + ":" + s_minute + format);
                             }
-                        }, CalendarHour, CalendarMinute, false);
+                        }, CalendarHour, CalendarMinute, true);
                 timepickerdialog.show();
             }
         });
