@@ -1,41 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_green_dark">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="fill_vertical"
+    android:background="#c1d5e0">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Others Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="Course +" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/button"
-        android:text="Send Notification"
-        android:layout_marginTop="50dp"
-        android:id="@+id/notifier"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gpacalc"
-        android:text="Gpa calc"
-        android:layout_centerHorizontal="true"
-        />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="20dp">
+            <Button
+                android:backgroundTint="@color/white"
+                android:id="@+id/button"
+                android:drawableEnd="@drawable/ic_bookshelf_icon_icons_com_54414"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textColor="#0069c0"
+                android:textStyle="bold"
+                android:text="Add Course"
 
-    <Button
-        android:id="@+id/startPomodoro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pomodoro"
-        android:layout_centerVertical="true"
-        />
+                />
+        </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="20dp">
+            <Button
+                android:backgroundTint="@color/white"
+                android:id="@+id/gpacalc"
+                android:drawableLeft="@drawable/ic__486564177_finance_finance_calculator_81497"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#62757f"
+                android:textStyle="bold"
+                android:text="gpa calculator"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="20dp">
+            <Button
+                android:backgroundTint="@color/white"
+                android:id="@+id/pomodoroTimer"
+                android:drawableEnd="@drawable/ic_measure_speed_stopwatch_time_timepiece_timer_icon_icons_com_55345"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textColor="#ef5350"
+                android:textStyle="bold"
+                android:text="Pomodoro Timer"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

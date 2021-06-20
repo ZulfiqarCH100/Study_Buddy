@@ -1,9 +1,12 @@
 package com.example.studybuddy;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,6 +17,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpBottomNavigation();
+        getSupportActionBar().hide();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             scheduleAlarm();
@@ -40,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleIntent(Intent intent){
         String frag = intent.getStringExtra("fragmentToOpen");
-        Log.d("wow", intent.getAction());
         if (frag != null){
             Log.d("wow", "intent ai yahan");
             Log.d("wow", frag);
@@ -75,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Setting default fragment.
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodayFragment()).commit();
+        setNavColor(R.color.color_bnv2);
 
         //Setting click listeners for the bottom navigation to switch fragments.
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -85,15 +91,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_today:
                         selectedFragment = new TodayFragment();
+                        setNavColor(R.color.color_bnv2);
                         break;
                     case R.id.nav_todo:
                         selectedFragment = new TodoFragment();
+                        setNavColor(R.color.color_bnv3);
                         break;
                     case R.id.nav_timetable:
                         selectedFragment = new TimeTableFragment();
+                        setNavColor(R.color.color_bnv1);
                         break;
                     case R.id.nav_others:
                         selectedFragment = new OthersFragment();
+                        setNavColor(R.color.color_bnv4);
                         break;
                 }
 
@@ -102,6 +112,32 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void setNavColor(@ColorRes int id){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            bottomNav.setItemIconTintList(getColorStateList(id));
+            bottomNav.setItemTextColor(getColorStateList(id));
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getColor(id));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        try {
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == REQUEST_CODE  && resultCode  == RESULT_OK) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodoFragment()).commit();
+            }
+        } catch (Exception ex) {
+            Toast.makeText(this, ex.toString(),
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     // Setup a recurring alarm every half hour

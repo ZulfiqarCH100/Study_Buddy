@@ -32,7 +32,7 @@ public class OthersFragment extends Fragment {
             }
         });
 
-        Button pomodoro = view.findViewById(R.id.startPomodoro);
+        Button pomodoro = view.findViewById(R.id.pomodoroTimer);
         pomodoro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,32 +50,6 @@ public class OthersFragment extends Fragment {
             }
         });
 
-
-        notifManager = NotificationManagerCompat.from(view.getContext());
-        Button notifier = view.findViewById(R.id.notifier);
-        notifier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //We send the notification here.
-                //We can sent and customize the notification immediately after the function call without placing the semicolon.
-                //Building and customizing the notification.
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                intent.putExtra("fragmentToOpen", "OpenToDo");
-                PendingIntent pendingIntent = PendingIntent.getActivity(view.getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-                Notification notification = new NotificationCompat.Builder(view.getContext(), Base.CHANNEL_1_ID)
-                        .setSmallIcon(R.drawable.icon_today)
-                        .setContentTitle("Test Notification")
-                        .setContentText("Beep Boop")
-                        .setPriority(3)
-                        .setContentIntent(pendingIntent)
-                        .setAutoCancel(true)
-                        .build();
-                //Sending the notification.
-                notifManager.notify(1, notification); //If we send another notification with the same id, this one will be overwriten. So use alag ids for alag notifications.
-            }
-        });
         return view;
     }
 

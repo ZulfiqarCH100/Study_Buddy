@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -91,7 +92,9 @@ public class AddToDoActivity extends AppCompatActivity {
                     t  = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT);
                     SQLite db = new SQLite(getApplicationContext());
                     db.SaveToDo(taskName.getText().toString(), d_hour, d_minute, mDay, mMonth, mYear);
-                    AddToDoActivity.super.onBackPressed();
+                    Intent i = new Intent();
+                    setResult(RESULT_OK, i);
+                    finish();
                 }
                 else{
                     t = Toast.makeText(getApplicationContext(), "Incomplete Data", Toast.LENGTH_SHORT);

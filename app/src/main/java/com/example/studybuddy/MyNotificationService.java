@@ -38,11 +38,18 @@ public class MyNotificationService extends JobIntentService {
         i.putExtra("fragmentToOpen", "OpenToDo");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Check for updates.
+        Database db = new SQLite(this);
+        int todosDue = db.getTodaysToDoCount();
+        if (todosDue == 0)
+            return;
+
+        Log.d("wow", "Due " + todosDue);
 
         Notification notification = new NotificationCompat.Builder(this, Base.CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.icon_today)
-                .setContentTitle("Test Notification")
-                .setContentText("Beep Boop")
+                .setContentTitle("You have " + todosDue + " Tasks due today!")
+                .setContentText("Click here to view them")
                 .setPriority(3)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)

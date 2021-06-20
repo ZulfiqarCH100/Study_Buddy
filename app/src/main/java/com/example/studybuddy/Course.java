@@ -20,7 +20,20 @@ public class Course {
         this.venue = ven;
     }
         public String getTime(){
-            String time = String.valueOf(startHour) + ":" + String.valueOf(startMinute);
+            String hour = "";
+            String minute = "";
+
+            if (startHour < 10)
+                hour = "0" + String.valueOf(startHour);
+            else
+                hour = String.valueOf(startHour);
+
+            if (startMinute < 10)
+                minute = "0" + String.valueOf(startMinute);
+            else
+                minute = String.valueOf(startMinute);
+
+            String time = (hour + ":" + minute);
             return time;
     }
 }

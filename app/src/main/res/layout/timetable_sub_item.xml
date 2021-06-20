@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_marginRight="10dp">
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:background="#ffa06d">
+
+        <TextView
+            android:id="@+id/timeTableCourse"
+            android:layout_width="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:text="Database"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            />
+        <TextView
+            android:id="@+id/timeTableTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/timeTableDuration"
+            android:text="12:00 PM"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/timeTableRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:text="CS-12"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/timeTableSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="A1"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/timeTableDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1he"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="2dp"/>
+
+    </RelativeLayout>
+
+
+    
+    
+    
+</androidx.cardview.widget.CardView>

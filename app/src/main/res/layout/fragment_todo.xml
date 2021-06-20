@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_purple"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fd558f"
     android:id="@+id/wow">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,8 +21,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        app:tint = "@color/white"
         android:text="+"
-        android:textSize="30sp"
-        />
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:backgroundTint="#c51162"
+        android:src="@drawable/icon_add_todo" />
 
 </RelativeLayout>

@@ -21,7 +21,6 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ExampleViewH
     private ArrayList<Course> list;
     private TodayAdapter.onItemClickListener mListener;
     private DateFormat dateFormat;
-    int cardColor = 0;
 
     //This interface would be implemented in main activity to get position of the item clicked.
     //The main activity is subscribed to the listeners via this interface.
@@ -76,28 +75,6 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.ExampleViewH
         holder.venue.setText(current.venue);
         holder.time.setText(current.getTime());
         holder.duration.setText(current.duration);
-
-        RelativeLayout c = (RelativeLayout) holder.itemView.findViewById(R.id.todayCard);
-        if (cardColor == 0) {
-            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg4);
-            c.setBackground(myDrawable);
-            cardColor++;
-        }
-        else if (cardColor == 1) {
-            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg1);
-            c.setBackground(myDrawable);
-            cardColor++;
-        }
-        else if (cardColor == 2) {
-            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg2);
-            c.setBackground(myDrawable);
-            cardColor ++;
-        }
-        else if (cardColor == 3) {
-            Drawable myDrawable = holder.itemView.getResources().getDrawable(R.drawable.bg3);
-            c.setBackground(myDrawable);
-            cardColor = 0;
-        }
     }
 
     @Override

@@ -78,6 +78,10 @@ public class ToDo implements Comparable<ToDo> {
         return ID;
     }
 
+    public String getDueDate(){
+        return dueDay + "/" + dueMonth + "/" + dueYear;
+    }
+
     @Override
     public int compareTo(ToDo o) {
         return this.getIntDate() - o.getIntDate();
