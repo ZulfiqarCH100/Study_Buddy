@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             scheduleAlarm();
         }
         handleIntent(getIntent());
+
+        Runnable thread = new QuoteThread(getApplicationContext());
+        new Thread(thread).start();
     }
 
     public void handleIntent(Intent intent){

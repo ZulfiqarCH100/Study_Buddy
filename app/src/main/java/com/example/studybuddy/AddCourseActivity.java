@@ -41,9 +41,9 @@ public class AddCourseActivity extends AppCompatActivity {
     RadioGroup rGroup;
 
     //use this one in manifest ca-app-pub-9569967355870559~5155250766
-    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+    //private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
     //The upper one is Google ki sample ID. Mine is below
-    //private static final String AD_UNIT_ID ="ca-app-pub-9569967355870559/6276760747";
+    private static final String AD_UNIT_ID ="ca-app-pub-9569967355870559~6276760747";
     private static final String TAG = "MyActivity";
     private InterstitialAd interstitialAd;
 

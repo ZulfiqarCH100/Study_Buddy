@@ -22,7 +22,7 @@ public class Base extends Application {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             //making the notification channel.
             NotificationChannel channel = new NotificationChannel(CHANNEL_1_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
-            NotificationChannel channel2 = new NotificationChannel(CHANNEL_2_ID, "Test Notification2", NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel2 = new NotificationChannel(CHANNEL_2_ID, "Test Notification2", NotificationManager.IMPORTANCE_LOW);
 
             //Properties of the notification.
             channel.enableVibration(true);
