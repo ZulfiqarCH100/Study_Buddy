@@ -17,7 +17,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9569967355870559~6276760747"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
         <receiver
             android:name="com.example.studybuddy.BootBroadcastReceiver"

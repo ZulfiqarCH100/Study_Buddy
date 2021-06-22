@@ -41,10 +41,11 @@ public class AddCourseActivity extends AppCompatActivity {
     RadioGroup rGroup;
 
     //use this one in manifest ca-app-pub-9569967355870559~5155250766
-    //private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+    //google ad id for manifest ca-app-pub-3940256099942544~3347511713
+    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
     //The upper one is Google ki sample ID. Mine is below
-    private static final String AD_UNIT_ID ="ca-app-pub-9569967355870559~6276760747";
-    private static final String TAG = "MyActivity";
+   // private static final String AD_UNIT_ID ="ca-app-pub-9569967355870559/6276760747";
+
     private InterstitialAd interstitialAd;
 
     ArrayList<DaysCheckList> listVOs = new ArrayList<>();
@@ -61,6 +62,9 @@ public class AddCourseActivity extends AppCompatActivity {
 
     public void loadAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
+
+//        Toast t = Toast.makeText(getApplicationContext(), "Ad Load", 0);
+//        t.show();
         InterstitialAd.load(this, AD_UNIT_ID, adRequest, new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -74,6 +78,8 @@ public class AddCourseActivity extends AppCompatActivity {
                                     public void onAdDismissedFullScreenContent() {
                                         // Called when fullscreen content is dismissed.
                                         AddCourseActivity.this.interstitialAd = null;
+//                                        Toast t = Toast.makeText(getApplicationContext(), "Ad Fail1", 0);
+//                                        t.show();
                                     }
 
                                     @Override
@@ -82,6 +88,8 @@ public class AddCourseActivity extends AppCompatActivity {
                                         // Make sure to set your reference to null so you don't
                                         // show it a second time.
                                         AddCourseActivity.this.interstitialAd = null;
+//                                        Toast t = Toast.makeText(getApplicationContext(), "Ad Fail2", 0);
+//                                        t.show();
                                     }
 
                                     @Override
@@ -105,8 +113,15 @@ public class AddCourseActivity extends AppCompatActivity {
 
     private void showInterstitial() {
         // Show the ad if it's ready. Otherwise toast and restart the game.
+
         if (interstitialAd != null) {
             interstitialAd.show(this);
+//            Toast t = Toast.makeText(getApplicationContext(), "Ad Show", 0);
+//            t.show();
+        }
+        else{
+//            Toast t2 = Toast.makeText(getApplicationContext(), "Ad Null", 0);
+//            t2.show();
         }
     }
 

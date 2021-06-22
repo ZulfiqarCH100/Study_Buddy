@@ -4,71 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
     tools:context=".MainActivity">
 
     <ScrollView
-        android:background="#6040"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#E1F3F1">
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Gpa Calculator"
-                android:textSize="40sp"
                 android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textSize="40sp" />
+
             <EditText
+                android:layout_marginTop="20dp"
                 android:id="@+id/editText1"
-                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Course Credits"
                 android:textColor="@color/black"
-                android:hint="Your course credit"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textSize="25sp" />
+
             <EditText
                 android:id="@+id/editText2"
-                android:textSize="30sp"
-                android:textColor="@color/black"
-                android:hint="Your course grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginVertical="20dp"
                 android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:hint="Course Grade"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
             <Button
                 android:id="@+id/button"
-                android:layout_gravity="center"
-                android:text="Add course"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Add course" />
+
             <Button
                 android:id="@+id/button2"
-                android:text="See you Cgpa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Calculate "
+                android:layout_gravity="center_horizontal"/>
+
             <TextView
                 android:id="@+id/textView"
-                android:textSize="40sp"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:hint="Here is cgpa"
-                android:layout_marginVertical="40dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="40dp"
+                android:gravity="center"
+                android:hint="Your CGPA"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
             <Button
                 android:id="@+id/button3"
-                android:text="clear"
-                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:text="clear" />
         </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
 
 </RelativeLayout>
 
